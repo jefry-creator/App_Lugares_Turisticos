@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1055072710971",
+    "project_id": "app-lugares-turisticos-8d7d3",
+    "storage_bucket": "app-lugares-turisticos-8d7d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055072710971:android:57a98613f8a6652587471e",
+        "android_client_info": {
+          "package_name": "com.example.app_lugares_turisticos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3v_gh7gdaVsC360y8zx8AvTx4jtWC0TY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

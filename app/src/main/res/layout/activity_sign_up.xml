@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/"
+    android:background="@drawable/signupbk"
     tools:context=".SignUpActivity">
 
     <!-- Spacer to move the CardView down -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="160dp"
         android:layout_weight="1" />
 
     <androidx.cardview.widget.CardView
