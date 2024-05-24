@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/LogoAct"
+    android:background="@drawable/logoactivity"
     tools:context=".LoginActivity">
 
     <!-- Spacer to move the CardView down -->
