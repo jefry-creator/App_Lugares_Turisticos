@@ -50,4 +50,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.github.TutorialsAndroid:GButton:v1.0.19")
     implementation ("com.google.android.gms:play-services-auth:20.4.0")
+    implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.3.70")
 }
