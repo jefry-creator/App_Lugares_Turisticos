@@ -67,14 +67,15 @@
                 android:text="Login"
                 android:id="@+id/login_button"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/light_bluey"
                 app:cornerRadius="20dp"/>
 
             <com.developer.gbuttons.GoogleSignInButton
                 android:id="@+id/googleBtn"
-                android:layout_width="307dp"
-                android:layout_height="wrap_content"
+                android:layout_width="331dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"

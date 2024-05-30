@@ -9,49 +9,38 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.app_lugares_turisticos.databinding.ActivityMainBinding;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private FragmentManager fragmentManager;
+
+    ChipNavigationBar bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
 
-        fragmentManager = getSupportFragmentManager();
+        bottomNav = findViewById(R.id.bottomAppBar);
 
-        if (savedInstanceState == null) {
-            binding.bottomNavMenu.setItemSelected(R.id.home, true);
-            replaceFragment(new HomeFragment());
-        }
-
-        binding.bottomNavMenu.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+        bottomNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(int id) {
-                Fragment fragment = null;
-                switch (id) {
-                    case R.id.home:
-                        fragment = new HomeFragment();
-                        break;
-                    case R.id.discover:
-                        fragment = new DiscoverFragment();
-                        break;
-                    case R.id.account:
-                        fragment = new AccountFragment();
-                        break;
+            public void onItemSelected(int i) {
+                if (i == R.id.home) {
+                    replaceFragment(new HomeFragment());
+                } else if (i == R.id.home) {
+                    replaceFragment(new DiscoverFragment());
+                }else if (i == R.id.discover) {
+                    replaceFragment(new DiscoverFragment());
                 }
-                if (fragment != null) {
-                    replaceFragment(fragment);
-                } else {
-                    Log.e(TAG, "Error creating fragment");
+                else if (i == R.id.account) {
+                    replaceFragment(new AccountFragment());
                 }
             }
         });
+
     }
 
     private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();

@@ -10,16 +10,17 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_nav_menu"/>
+        android:layout_above="@id/bottomAppBar"/>
+
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/bottom_nav_menu"
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/rounded"
+        android:background="@color/light_bluey"
         android:elevation="16dp"
-        android:padding="8dp"
+        android:padding="4dp"
         app:cnb_menuResource="@menu/bottom_nav_menu"
         />
 
