@@ -67,7 +67,8 @@
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/light_bluey"
-                app:cornerRadius="20dp"/>
+                app:cornerRadius="20dp"
+                android:textColor="@color/white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

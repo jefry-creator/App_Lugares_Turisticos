@@ -253,9 +253,11 @@
             android:id="@+id/citydetails_image"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/agra"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeableImageView_BOTTOMRoundedCorners" />
