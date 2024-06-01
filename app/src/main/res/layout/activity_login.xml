@@ -81,8 +81,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
                 android:padding="8dp"
-                android:text="Sign in with Google"
-                app:isDarkTheme="true" />
+                android:text="Sign in with Google" />
 
             <TextView
                 android:id="@+id/signUpRedirectText"
