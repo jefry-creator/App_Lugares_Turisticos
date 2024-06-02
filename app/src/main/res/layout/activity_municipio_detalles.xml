@@ -125,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@id/citydetails_image" />
 
         <ImageButton
-            android:id="@+id/button"
+            android:id="@+id/btnLikes"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="296dp"
@@ -135,8 +135,21 @@
             app:layout_constraintStart_toStartOf="@+id/citydetails_name"
             app:layout_constraintTop_toTopOf="@+id/citydetails_name" />
 
+        <Button
+            android:id="@+id/like_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="@+id/citydetails_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtLikesCounts"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="337dp"

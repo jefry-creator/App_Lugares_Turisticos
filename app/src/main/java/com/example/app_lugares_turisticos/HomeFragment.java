@@ -3,7 +3,11 @@ package com.example.app_lugares_turisticos;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,6 +23,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -27,11 +39,55 @@ public class HomeFragment extends Fragment {
     Button asdns;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private RecyclerView recyclerView;
+    private SitiosAdapter adapter;
+    private List<Sitios> sitiosList;
+    private DatabaseReference mDatabase;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Infla el layout una vez
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.touristattractions_recyclerview);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        sitiosList = new ArrayList<>();
+        adapter = new SitiosAdapter(sitiosList, sitio -> {
+            // Maneja el clic aquí
+                String key = sitio.getKey();
+                String nombre = sitio.nombreSitio;
+                String descripcion = sitio.descripcionSitio;
+                Intent intent = new Intent(new Intent(getActivity(),MunicipioDetalles.class));
+                intent.putExtra("id", key);
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("descripcion", descripcion);
+                getActivity().startActivity(intent);
+
+        });
+        recyclerView.setAdapter(adapter);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("sitios");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                sitiosList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Sitios sitio = snapshot.getValue(Sitios.class);
+                    if (sitio != null) {
+                        sitio.setKey(snapshot.getKey());  // Asigna la clave
+                        sitiosList.add(sitio);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Manejo de errores
+            }
+        });
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         correo = user.getEmail();

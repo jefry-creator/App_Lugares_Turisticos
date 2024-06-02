@@ -42,6 +42,8 @@ public class DiscoverFragment extends Fragment {
     EditText nombreSitio, descripcionSitio, etTarifa, etActividades, direccionSitio;
     Button btnGuardar;
 
+    private DatabaseReference mPostRef;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -115,6 +117,7 @@ public class DiscoverFragment extends Fragment {
 
         String key = myRef.push().getKey();
         if (key != null) {
+            sitios.setKey(key); // Asigna la clave al objeto Sitios
             myRef.child(key).setValue(sitios).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(getContext(), "Sitio guardado exitosamente", Toast.LENGTH_LONG).show();

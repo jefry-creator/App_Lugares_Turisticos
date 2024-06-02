@@ -42,10 +42,10 @@ public class AccountFragment extends Fragment {
 
         // Inicializar Firebase Database
         mDatabase = FirebaseDatabase.getInstance();
-        mPostId = "your_post_id-2"; // Reemplaza "your_post_id" con el id de la publicación actual
+        mPostId = "-NzLv1sulNY5sVeEZIMj"; // Reemplaza "your_post_id" con el id de la publicación actual
 
         // Referencia a la publicación actual en la base de datos
-        mPostRef = mDatabase.getReference().child("posts").child(mPostId);
+        mPostRef = mDatabase.getReference().child("sitios").child(mPostId);
 
         // Referencias a los elementos de la interfaz de usuario
         mLikeCountTextView = view2.findViewById(R.id.contador2);

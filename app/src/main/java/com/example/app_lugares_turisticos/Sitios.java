@@ -2,8 +2,17 @@ package com.example.app_lugares_turisticos;
 
 public class Sitios {
 
+    private String key;
     String URLimagen,nombreSitio, descripcionSitio,horaApertura, horaCierre, tarifaSitio, actividadesSitio;
     double Latitud, Longitud;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getURLimagen() {
         return URLimagen;
