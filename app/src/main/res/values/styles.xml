@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>02
+    <style name="Theme.TimePickerEnAndroid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="android:timePickerDialogTheme">@style/ThemeOverlay.App.TimePicker</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorSecondary">@color/light_bluey</item>
+    </style></resources>
