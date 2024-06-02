@@ -12,170 +12,17 @@
         android:paddingBottom="40dp">
 
         <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="PLATOS DE COMIDA FAMOSOS"
-            android:textColor="#1976D2"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_place2image" />
-
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/citydetails_food1image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="24dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/agra_food_petha"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/divider3"
-            app:shapeAppearanceOverlay="@style/ShapeableImageView_ALLRoundedCorners" />
-
-        <TextView
-            android:id="@+id/citydetails_food1name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Descripción"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/citydetails_food1image"
-            app:layout_constraintTop_toTopOf="@+id/citydetails_food1image" />
-
-        <TextView
             android:id="@+id/citydetails_place1description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="360dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/nunito_sans_bold"
             android:text="Descripción aquí"
             android:textColor="#CC000000"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/citydetails_place1image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/citydetails_place1name"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_place1name" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/citydetails_food2image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="24dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/agra_food_bhalla"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_food1image"
-            app:shapeAppearanceOverlay="@style/ShapeableImageView_ALLRoundedCorners" />
-
-        <TextView
-            android:id="@+id/citydetails_food2name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Descripción"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/citydetails_food2image"
-            app:layout_constraintTop_toTopOf="@+id/citydetails_food2image" />
-
-        <TextView
-            android:id="@+id/citydetails_food2description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:text="Descripción aquí"
-            android:textColor="#CC000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/citydetails_food2image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/citydetails_food2image"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_food2name" />
-
-        <TextView
-            android:id="@+id/citydetails_place2description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:text="Descripción aquí"
-            android:textColor="#CC000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/citydetails_place2image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/citydetails_place1name"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_place2name" />
-
-        <TextView
-            android:id="@+id/citydetails_place2name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Descripción"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/citydetails_place2image"
-            app:layout_constraintTop_toTopOf="@+id/citydetails_place2image" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/citydetails_place2image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="32dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/agra_agrafort"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@id/citydetails_place1image"
-            app:shapeAppearanceOverlay="@style/ShapeableImageView_ALLRoundedCorners" />
-
-        <TextView
-            android:id="@+id/citydetails_place1name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Descripción"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/citydetails_place1image"
-            app:layout_constraintTop_toTopOf="@+id/citydetails_place1image" />
-
-        <TextView
-            android:id="@+id/citydetails_food1description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:text="Descripción aquí"
-            android:textColor="#CC000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/citydetails_food1image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/citydetails_place1name"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_food1name" />
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
         <TextView
             android:id="@+id/textView14"
@@ -207,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Octobre - Marzo"
+            android:text="Tarifa"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
@@ -219,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans_bold"
-            android:text="Mejor Época para Visitar"
+            android:text="$100 - $120"
             android:textColor="#CC000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
@@ -231,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="2 a 3 Days"
+            android:text="Horarios de Apertura"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
@@ -243,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans_bold"
-            android:text="Aprox. Duración del Viaje"
+            android:text="10:00am a 12:00pm"
             android:textColor="#CC000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
@@ -253,7 +100,7 @@
             android:id="@+id/citydetails_image"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:scaleType="centerCrop"
             android:src="@drawable/agra"
             app:layout_constraintEnd_toEndOf="parent"
@@ -276,6 +123,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/citydetails_image" />
+
+        <ImageButton
+            android:id="@+id/button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="296dp"
+            android:background="@color/white"
+            android:src="@drawable/baseline_favorite_border_24"
+            app:layout_constraintBottom_toBottomOf="@+id/citydetails_name"
+            app:layout_constraintStart_toStartOf="@+id/citydetails_name"
+            app:layout_constraintTop_toTopOf="@+id/citydetails_name" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="337dp"
+            android:layout_marginTop="5dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/citydetails_name"
+            app:layout_constraintStart_toStartOf="@+id/citydetails_name"
+            app:layout_constraintTop_toTopOf="@+id/citydetails_name" />
+
 
         <TextView
             android:id="@+id/textView2"
@@ -315,8 +185,8 @@
 
         <TextView
             android:id="@+id/citydetails_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="94dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/nunito_sans_bold"
@@ -341,17 +211,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/citydetails_place1image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="24dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/agra"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
-            app:shapeAppearanceOverlay="@style/ShapeableImageView_ALLRoundedCorners" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
