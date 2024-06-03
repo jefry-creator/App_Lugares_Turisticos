@@ -60,6 +60,7 @@ public class HomeFragment extends Fragment {
                 String descripcion = sitio.descripcionSitio;
                 double latitud = sitio.Latitud;
                 double longitud = sitio.Longitud;
+                String url = sitio.getURLimagen();
 
                 Intent intent = new Intent(new Intent(getActivity(),MunicipioDetalles.class));
                 intent.putExtra("id", key);
@@ -67,6 +68,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("descripcion", descripcion);
                 intent.putExtra("latitud", latitud + "");
                 intent.putExtra("longitud", longitud + "");
+                intent.putExtra("url", url);
                 getActivity().startActivity(intent);
 
         });

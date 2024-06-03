@@ -23,10 +23,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 public class MunicipioDetalles extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
+    private  ShapeableImageView imgSitio;
 
     private Button btnObtenerUbicacion;
     private FirebaseDatabase mDatabase;
@@ -45,11 +49,13 @@ public class MunicipioDetalles extends AppCompatActivity {
 
         titulo = findViewById(R.id.citydetails_name);
         txtdesc = findViewById(R.id.citydetails_description);
+        imgSitio = findViewById(R.id.citydetails_image);
 
         Intent intent = getIntent();
         String key = intent.getStringExtra("id");
         String nombre = intent.getStringExtra("nombre");
         String desc = intent.getStringExtra("descripcion");
+        String url = intent.getStringExtra("url");
         latitud = intent.getStringExtra("latitud");
         longitud = intent.getStringExtra("longitud");
 
@@ -142,6 +148,18 @@ public class MunicipioDetalles extends AppCompatActivity {
             }
         });
 
+
+        Picasso.get().load(url).into(imgSitio, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
 
     }
 

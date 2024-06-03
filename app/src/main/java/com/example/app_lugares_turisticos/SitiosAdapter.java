@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -49,6 +52,19 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
         holder.itemView.setOnClickListener(v -> listener.onItemClick(sitio));
+
+        // Cargar la imagen desde la URL usando Picasso
+        Picasso.get().load(sitio.getURLimagen()).into(holder.imgSitio, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
     }
 
     @Override
@@ -60,10 +76,13 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
         public TextView nombreTextView;
         public TextView descripcionTextView;
 
+        private ImageView imgSitio;
+
         public SitiosViewHolder(View itemView) {
             super(itemView);
             nombreTextView = itemView.findViewById(R.id.nombre_departamento);
             descripcionTextView = itemView.findViewById(R.id.nombre_municipio);
+            imgSitio = itemView.findViewById(R.id.image_departamento);
         }
     }
 }

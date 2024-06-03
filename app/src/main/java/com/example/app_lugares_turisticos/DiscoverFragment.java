@@ -1,11 +1,15 @@
 package com.example.app_lugares_turisticos;
 
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -14,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -28,15 +33,28 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.google.firebase.Firebase;
+import com.google.firebase.Timestamp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 public class DiscoverFragment extends Fragment {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private Uri imageUri;
+    private ImageView imgSitio;
+
+    String url;
     private TextView startTime;
     private TextView endTime;
     EditText nombreSitio, descripcionSitio, etTarifa, etActividades, direccionSitio;
@@ -56,9 +74,14 @@ public class DiscoverFragment extends Fragment {
         etActividades = view.findViewById(R.id.Activities);
         direccionSitio = view.findViewById(R.id.Address_site);
         btnGuardar = view.findViewById(R.id.SaveBtn);
+        imgSitio = view.findViewById(R.id.image);
 
         view.findViewById(R.id.from_time).setOnClickListener(v -> showStartTimePicker());
         view.findViewById(R.id.to_time).setOnClickListener(v -> showEndTimePicker());
+
+
+
+        imgSitio.setOnClickListener(v -> seleccionarImagenDeGaleria());
 
         btnGuardar.setOnClickListener(v -> GuardarSitio());
         return view;
@@ -73,20 +96,67 @@ public class DiscoverFragment extends Fragment {
         String HoraA = startTime.getText().toString();
         String HoraC = endTime.getText().toString();
 
-        Sitios sitios = new Sitios();
-        sitios.setNombreSitio(Nombre_Lugar);
-        sitios.setDescripcionSitio(Desc_Lugar);
-        sitios.setTarifaSitio("$"+tarifa);
-        sitios.setActividadesSitio(Actividades);
-        sitios.setHoraApertura(HoraA);
-        sitios.setHoraCierre(HoraC);
+        Picasso.get().load(url).into(imgSitio, new Callback() {
+            @Override
+            public void onSuccess() { }
 
-        getCoordinatesFromAddress(Direccion, (latitude, longitude) -> {
-            sitios.setLatitud(latitude);
-            sitios.setLongitud(longitude);
-            GuardadarEnBasedeDatos(sitios);
+            @Override
+            public void onError(Exception e) { }
         });
+
+        if (imageUri != null) {
+
+            // Crear una referencia en Firebase Storage para la imagen
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + UUID.randomUUID().toString());
+
+            // Subir la imagen a Firebase Storage
+            storageRef.putFile(imageUri)
+                    .addOnSuccessListener(taskSnapshot -> {
+                        // Si la imagen se sube correctamente, obtener su URL
+                        storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            Sitios sitios = new Sitios();
+                            sitios.setNombreSitio(Nombre_Lugar);
+                            sitios.setDescripcionSitio(Desc_Lugar);
+                            sitios.setTarifaSitio("$"+tarifa);
+                            sitios.setActividadesSitio(Actividades);
+                            sitios.setHoraApertura(HoraA);
+                            sitios.setHoraCierre(HoraC);
+                            sitios.setURLimagen(uri.toString());
+
+                            getCoordinatesFromAddress(Direccion, (latitude, longitude) -> {
+                                sitios.setLatitud(latitude);
+                                sitios.setLongitud(longitude);
+                                GuardadarEnBasedeDatos(sitios);
+                            });
+                        });
+                    })
+                    .addOnFailureListener(e -> {
+
+                        Toast.makeText(getContext(), "Seleccione una imagen", Toast.LENGTH_LONG).show();
+                    });
+        } else {
+
+
+        }
     }
+
+    private void seleccionarImagenDeGaleria() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Seleccione una imagen"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            imgSitio.setImageURI(imageUri);
+        }
+    }
+
     public interface OnCoordinatesObtainedListener {
         void onCoordinatesObtained(double latitude, double longitude);
     }
