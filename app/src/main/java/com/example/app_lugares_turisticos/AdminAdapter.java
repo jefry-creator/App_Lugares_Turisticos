@@ -1,45 +1,34 @@
 package com.example.app_lugares_turisticos;
 
-import static android.app.PendingIntent.getActivity;
-
+import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosViewHolder> {
+public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHolder> {
     private List<Sitios> sitiosList;
-    private OnItemClickListener listener;
+    private SitiosAdapter.OnItemClickListener listener;
+    private AccountFragment accountFragment;
 
-    private DatabaseReference Database;
-
-    public interface OnItemClickListener {
-        void onItemClick(Sitios sitio);
-    }
-
-    public SitiosAdapter(List<Sitios> sitiosList, OnItemClickListener listener) {
+    public AdminAdapter(List<Sitios> sitiosList, SitiosAdapter.OnItemClickListener listener, AccountFragment accountFragment) {
         this.sitiosList = sitiosList;
         this.listener = listener;
+        this.accountFragment = accountFragment;
     }
 
     @NonNull
     @Override
     public SitiosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_recycleview_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tour_atracciones_lista_layout, parent, false);
         return new SitiosViewHolder(view);
     }
 
@@ -48,7 +37,7 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
         Sitios sitio = sitiosList.get(position);
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(sitio));
+        holder.btnBorrar.setOnClickListener(v -> accountFragment.eliminar(sitio.getKey()));
     }
 
     @Override
@@ -57,13 +46,17 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
     }
 
     public static class SitiosViewHolder extends RecyclerView.ViewHolder {
+        ImageView image, btnBorrar, btnEditar;
         public TextView nombreTextView;
         public TextView descripcionTextView;
 
         public SitiosViewHolder(View itemView) {
             super(itemView);
-            nombreTextView = itemView.findViewById(R.id.nombre_departamento);
-            descripcionTextView = itemView.findViewById(R.id.nombre_municipio);
+            image = itemView.findViewById(R.id.touratr_image);
+            nombreTextView = itemView.findViewById(R.id.touratr_municipio);
+            descripcionTextView = itemView.findViewById(R.id.touratr_departamento);
+            btnBorrar = itemView.findViewById(R.id.BtnBorrar);
+            btnEditar = itemView.findViewById(R.id.BtnEditar);
         }
     }
 }

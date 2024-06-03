@@ -1,100 +1,122 @@
 package com.example.app_lugares_turisticos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AccountFragment extends Fragment {
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mPostRef;
-    private TextView mLikeCountTextView;
-    private Button mLikeButton;
-    private String mPostId;
-    private String mCurrentUserId;
+    private RecyclerView recyclerView;
+    private AdminAdapter adapter;
+    ArrayList<Sitios> sitiosList;
+    private DatabaseReference mDatabase;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view2 = inflater.inflate(R.layout.fragment_account, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_tour_atracciones_lista, container, false);
 
-        // Inicializar Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        mCurrentUserId = mAuth.getCurrentUser().getUid();
+        recyclerView = view.findViewById(R.id.tourattr_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        sitiosList = new ArrayList<>();
+        adapter = new AdminAdapter(sitiosList, sitio -> {
+            String key = sitio.getKey();
+            String nombre = sitio.nombreSitio;
+            String descripcion = sitio.descripcionSitio;
+            Intent intent = new Intent(new Intent(getActivity(), MunicipioDetalles.class));
+            intent.putExtra("id", key);
+            intent.putExtra("nombre", nombre);
+            intent.putExtra("descripcion", descripcion);
+            startActivity(intent);
+        }, this);
+        recyclerView.setAdapter(adapter);
 
-        // Inicializar Firebase Database
-        mDatabase = FirebaseDatabase.getInstance();
-        mPostId = "-NzLv1sulNY5sVeEZIMj"; // Reemplaza "your_post_id" con el id de la publicación actual
-
-        // Referencia a la publicación actual en la base de datos
-        mPostRef = mDatabase.getReference().child("sitios").child(mPostId);
-
-        // Referencias a los elementos de la interfaz de usuario
-        mLikeCountTextView = view2.findViewById(R.id.contador2);
-        mLikeButton = view2.findViewById(R.id.like_button);
-
-        // Escuchar cambios en los likes de la publicación actual
-        mPostRef.child("likes").addValueEventListener(new ValueEventListener() {
+        mDatabase = FirebaseDatabase.getInstance().getReference("sitios");
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Contar el número de likes
-                long likeCount = dataSnapshot.getChildrenCount();
-                mLikeCountTextView.setText(String.valueOf(likeCount));
-
-                // Verificar si el usuario actual dio like a la publicación
-                if (dataSnapshot.child(mCurrentUserId).exists()) {
-                    mLikeButton.setText("Unlike");
-                } else {
-                    mLikeButton.setText("Like");
+                sitiosList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Sitios sitio = snapshot.getValue(Sitios.class);
+                    if (sitio != null) {
+                        sitio.setKey(snapshot.getKey());  // Asigna la clave
+                        sitiosList.add(sitio);
+                    }
                 }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Manejar errores
+                if (getActivity() != null) {
+                    Toast.makeText(getActivity(), "Error al cargar datos: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-        // Configurar el OnClickListener para el botón de like
-        mLikeButton.setOnClickListener(view -> {
-            // Verificar si el usuario ya dio like a la publicación
-            if (mLikeButton.getText().equals("Unlike")) {
-                // Si ya dio like, entonces quitar el like
-                unlikePost(mPostId, mCurrentUserId);
-            } else {
-                // Si no ha dado like, entonces dar like
-                likePost(mPostId, mCurrentUserId);
-            }
-        });
-
-        return view2;
+        return view;
     }
 
-    // Método para dar like a una publicación
-    private void likePost(String postId, String userId) {
-        mPostRef.child("likes").child(userId).setValue(true);
-    }
+    public void eliminar(String sitioId) {
+        if (getActivity() == null || getContext() == null) {
+            return;
+        }
 
-    // Método para quitar el like de una publicación
-    private void unlikePost(String postId, String userId) {
-        mPostRef.child("likes").child(userId).removeValue();
+        new AlertDialog.Builder(getContext())
+                .setTitle("Confirmación de eliminación")
+                .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Eliminar el elemento de la base de datos
+                        DatabaseReference sitioRef = FirebaseDatabase.getInstance().getReference().child("sitios").child(sitioId);
+                        sitioRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                if (getActivity() != null) {
+                                    Toast.makeText(getActivity(), "Elemento eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                if (getActivity() != null) {
+                                    Toast.makeText(getActivity(), "Error al eliminar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Cerrar el diálogo sin hacer nada
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
 }
