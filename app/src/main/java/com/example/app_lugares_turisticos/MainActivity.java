@@ -20,14 +20,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ChipNavigationBar bottomNav;
-
-    RecyclerView touristdestinations, touristattractions;
-    ArrayList<TuristaLugares_Model> touristDestinations_models;
-    ArrayList<TuristaAtracciones_Model> touristAttractions_models;
-    TuristaLugares_Adapter touristDestinations_adapter;
-    TuristaAtracciones_Adapter touristAttractions_adapter;
-    LinearLayoutManager manager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottomAppBar);
 
-        replaceFragment(new HomeFragment());
         bottomNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
