@@ -19,9 +19,8 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
     private List<Sitios> sitiosList;
     private SitiosAdapter.OnItemClickListener listener;
     private AccountFragment accountFragment;
-
+    private Registro_Activity registroActivity;
     private boolean isSelectionActive = false;
-
     public void setSelectionActive(boolean isActive) {
         isSelectionActive = isActive;
     }
@@ -45,20 +44,19 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
 
-        // Mostrar/ocultar el CheckBox basado en el estado de selección activo/inactivo
         holder.checkBox.setVisibility(isSelectionActive ? View.VISIBLE : View.GONE);
         holder.checkBox.setChecked(sitio.isSelected());
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             sitio.setSelected(isChecked);
         });
 
-
-        // Acción del botón de borrar
         holder.btnBorrar.setOnClickListener(v -> {
             if (accountFragment != null) {
                 accountFragment.eliminar(sitio.getKey());
             }
         });
+
+        holder.btnEditar.setOnClickListener(v -> listener.onItemClick(sitio));
     }
 
     @Override

@@ -61,7 +61,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         sitiosList = new ArrayList<>();
         adapter = new SitiosAdapter(sitiosList, sitio -> {
-            // Maneja el clic aquí
                 String key = sitio.getKey();
                 String nombre = sitio.nombreSitio;
                 String descripcion = sitio.descripcionSitio;

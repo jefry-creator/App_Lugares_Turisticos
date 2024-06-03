@@ -36,7 +36,7 @@ public class AccountFragment extends Fragment {
     ArrayList<Sitios> sitiosList;
     private DatabaseReference mDatabase;
     private FloatingActionButton deleteButton;
-
+    private FloatingActionButton addButton;
     private Button selectButton;
 
     private boolean isSelectionActive = false;
@@ -53,15 +53,23 @@ public class AccountFragment extends Fragment {
 
         sitiosList = new ArrayList<>();
         adapter = new AdminAdapter(sitiosList, sitio -> {
-            String key = sitio.getKey();
-            String nombre = sitio.nombreSitio;
-            String descripcion = sitio.descripcionSitio;
-            Intent intent = new Intent(new Intent(getActivity(), MunicipioDetalles.class));
-            intent.putExtra("id", key);
-            intent.putExtra("nombre", nombre);
-            intent.putExtra("descripcion", descripcion);
-            startActivity(intent);
+            Intent intent = new Intent(getActivity(), Registro_Activity.class);
+            intent.putExtra("id", sitio.getKey());
+            intent.putExtra("nombre", sitio.getNombreSitio());
+            intent.putExtra("descripcion", sitio.getDescripcionSitio());
+            intent.putExtra("latitud", String.valueOf(sitio.getLatitud()));
+            intent.putExtra("longitud", String.valueOf(sitio.getLongitud()));
+            intent.putExtra("url", sitio.getURLimagen());
+            intent.putExtra("tarifa", sitio.getTarifaSitio());
+            intent.putExtra("actividades", sitio.getActividadesSitio());
+            intent.putExtra("direccion", sitio.getDireccionSitio());
+            intent.putExtra("horaApertura", sitio.getHoraApertura());
+            intent.putExtra("horaCierre", sitio.getHoraCierre());
+            intent.putExtra("editar", true); // Indica que es una edición
+            getActivity().startActivity(intent);
         }, this);
+
+
         recyclerView.setAdapter(adapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference("sitios");
@@ -90,6 +98,8 @@ public class AccountFragment extends Fragment {
         deleteButton = view.findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener(v -> deleteSelectedItems());
 
+        addButton = view.findViewById(R.id.BtnRegistrar);
+        addButton.setOnClickListener(v -> startActivity(new Intent(getActivity(), Registro_Activity.class)));
         return view;
     }
 
@@ -123,8 +133,6 @@ public class AccountFragment extends Fragment {
                 .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
-
-
     }
 
     public void eliminar(String sitioId) {

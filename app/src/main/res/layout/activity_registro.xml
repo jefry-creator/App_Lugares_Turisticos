@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bkres"
+    tools:context=".Registro_Activity"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="300dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/image">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-0dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/Name_site"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:drawableTint="@color/light_bluey"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:backgroundTint="@color/white"
+                android:drawablePadding="8dp"
+                android:hint="Nombre del sitio"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:maxLines="1">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Description_site"
+                android:layout_width="320dp"
+                android:layout_height="120dp"
+                android:hint="Descripción"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:maxLines="15"
+                android:gravity="top"
+                android:padding="10dp"
+                android:background="@drawable/rounded">
+            </EditText>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/time_selection_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horario de trabajo:"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="50dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/to_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hasta"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/from_label" />
+
+                <TextView
+                    android:id="@+id/from_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Desde"
+                    android:textColor="@color/white"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/time_selection_label" />
+
+                <TextView
+                    android:id="@+id/from_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/from_label"
+                    tools:text="5:00 p.m."
+                    />
+
+                <TextView
+                    android:id="@+id/to_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/to_label"
+                    tools:text="12:00 p.m." />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <EditText
+                android:id="@+id/tarifa"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_edittext"
+                android:backgroundTint="@color/white"
+                android:drawableTint="@color/light_bluey"
+                android:drawableLeft="@drawable/baseline_attach_money_24"
+                android:hint="Tarifa general"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:layout_gravity="start"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:inputType="numberDecimal"
+                android:maxLines="1">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Activities"
+                android:layout_width="320dp"
+                android:layout_height="120dp"
+                android:hint="Actividades"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/white"
+                android:maxLines="2"
+                android:gravity="top"
+                android:padding="10dp"
+                android:background="@drawable/rounded">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Address_site"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableTint="@color/light_bluey"
+                android:drawableLeft="@drawable/baseline_add_location_alt_24"
+                android:drawablePadding="8dp"
+                android:hint="Direccón del sitio"
+                android:backgroundTint="@color/white"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:maxLines="1">
+            </EditText>
+            <Button
+                android:id="@+id/SaveBtn"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:text="Guardar"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/light_bluey"
+                android:background="@drawable/rounded">
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

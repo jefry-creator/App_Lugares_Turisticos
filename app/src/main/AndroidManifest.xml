@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_Lugares_Turisticos"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Registro_Activity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

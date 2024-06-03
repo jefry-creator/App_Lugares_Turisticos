@@ -62,6 +62,5 @@ dependencies {
     implementation("com.google.maps:google-maps-services:0.18.0")
 
     implementation("com.google.firebase:firebase-storage:21.0.0")
-
     implementation("com.squareup.picasso:picasso:2.8")
 }

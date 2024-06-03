@@ -3,7 +3,8 @@ package com.example.app_lugares_turisticos;
 public class Sitios {
 
     private String key;
-    String URLimagen,nombreSitio, descripcionSitio,horaApertura, horaCierre, tarifaSitio, actividadesSitio;
+    String URLimagen,nombreSitio, descripcionSitio, horaApertura, horaCierre,
+            tarifaSitio, actividadesSitio, direccionSitio;
     double Latitud, Longitud;
 
     boolean selected;
@@ -94,5 +95,13 @@ public class Sitios {
 
     public void setLongitud(double longitud) {
         Longitud = longitud;
+    }
+
+    public String getDireccionSitio() {
+        return direccionSitio;
+    }
+
+    public void setDireccionSitio(String direccionSitio) {
+        this.direccionSitio = direccionSitio;
     }
 }
