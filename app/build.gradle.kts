@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -54,4 +55,8 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:20.4.0")
     implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.3.70")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    implementation("com.google.maps:google-maps-services:0.18.0")
 }

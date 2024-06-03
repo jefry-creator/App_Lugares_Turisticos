@@ -58,10 +58,15 @@ public class HomeFragment extends Fragment {
                 String key = sitio.getKey();
                 String nombre = sitio.nombreSitio;
                 String descripcion = sitio.descripcionSitio;
+                double latitud = sitio.Latitud;
+                double longitud = sitio.Longitud;
+
                 Intent intent = new Intent(new Intent(getActivity(),MunicipioDetalles.class));
                 intent.putExtra("id", key);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("descripcion", descripcion);
+                intent.putExtra("latitud", latitud + "");
+                intent.putExtra("longitud", longitud + "");
                 getActivity().startActivity(intent);
 
         });

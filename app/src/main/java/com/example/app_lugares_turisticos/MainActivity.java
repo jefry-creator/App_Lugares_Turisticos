@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottomAppBar);
 
+        replaceFragment(new HomeFragment());
         bottomNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
+
                 if (i == R.id.home) {
                     replaceFragment(new HomeFragment());
-                } else if (i == R.id.home) {
-                    replaceFragment(new DiscoverFragment());
                 }else if (i == R.id.discover) {
                     replaceFragment(new DiscoverFragment());
                 }
