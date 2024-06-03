@@ -92,24 +92,31 @@ public class DiscoverFragment extends Fragment {
         void onCoordinatesObtained(double latitude, double longitude);
     }
     private void getCoordinatesFromAddress(String address, OnCoordinatesObtainedListener listener) {
-        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocationName(address, 1);
-            if (addresses != null && !addresses.isEmpty()) {
-                Address addressResult = addresses.get(0);
-                double latitude = addressResult.getLatitude();
-                double longitude = addressResult.getLongitude();
-                listener.onCoordinatesObtained(latitude, longitude);
-            } else {
-                Toast.makeText(getContext(), "Dirección no encontrada", Toast.LENGTH_LONG).show();
-                listener.onCoordinatesObtained(0.0, 0.0);
+        Geocoder geocoder = new Geocoder(getContext(), new Locale("es", "SV")); // Configuración para El Salvador
+        new Thread(() -> {
+            try {
+                List<Address> addresses = geocoder.getFromLocationName(address, 1);
+                if (addresses != null && !addresses.isEmpty()) {
+                    Address addressResult = addresses.get(0);
+                    double latitude = addressResult.getLatitude();
+                    double longitude = addressResult.getLongitude();
+                    listener.onCoordinatesObtained(latitude, longitude);
+                } else {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getContext(), "Dirección no encontrada", Toast.LENGTH_LONG).show();
+                        listener.onCoordinatesObtained(0.0, 0.0);
+                    });
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                getActivity().runOnUiThread(() -> {
+                    Toast.makeText(getContext(), "Error al obtener las coordenadas", Toast.LENGTH_LONG).show();
+                    listener.onCoordinatesObtained(0.0, 0.0);
+                });
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Error al obtener las coordenadas", Toast.LENGTH_LONG).show();
-            listener.onCoordinatesObtained(0.0, 0.0);
-        }
+        }).start();
     }
+
 
     void GuardadarEnBasedeDatos(Sitios sitios) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
