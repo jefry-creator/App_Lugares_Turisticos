@@ -3,8 +3,18 @@ package com.example.app_lugares_turisticos;
 public class Sitios {
 
     private String key;
-    String URLimagen,nombreSitio, descripcionSitio,horaApertura, horaCierre, tarifaSitio, actividadesSitio, url;
+    String URLimagen,nombreSitio, descripcionSitio,horaApertura, horaCierre, tarifaSitio, actividadesSitio;
     double Latitud, Longitud;
+
+    boolean selected;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     public String getKey() {
         return key;

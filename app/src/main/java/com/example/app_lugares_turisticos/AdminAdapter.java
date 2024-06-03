@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,12 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
     private List<Sitios> sitiosList;
     private SitiosAdapter.OnItemClickListener listener;
     private AccountFragment accountFragment;
+
+    private boolean isSelectionActive = false;
+
+    public void setSelectionActive(boolean isActive) {
+        isSelectionActive = isActive;
+    }
 
     public AdminAdapter(List<Sitios> sitiosList, SitiosAdapter.OnItemClickListener listener, AccountFragment accountFragment) {
         this.sitiosList = sitiosList;
@@ -37,7 +44,21 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
         Sitios sitio = sitiosList.get(position);
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
-        holder.btnBorrar.setOnClickListener(v -> accountFragment.eliminar(sitio.getKey()));
+
+        // Mostrar/ocultar el CheckBox basado en el estado de selección activo/inactivo
+        holder.checkBox.setVisibility(isSelectionActive ? View.VISIBLE : View.GONE);
+        holder.checkBox.setChecked(sitio.isSelected());
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            sitio.setSelected(isChecked);
+        });
+
+
+        // Acción del botón de borrar
+        holder.btnBorrar.setOnClickListener(v -> {
+            if (accountFragment != null) {
+                accountFragment.eliminar(sitio.getKey());
+            }
+        });
     }
 
     @Override
@@ -45,10 +66,27 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
         return sitiosList.size();
     }
 
+    public void clearSelections() {
+        for (Sitios sitio : sitiosList) {
+            sitio.setSelected(false);
+        }
+    }
+
+    public List<Sitios> getSelectedItems() {
+        List<Sitios> selectedItems = new ArrayList<>();
+        for (Sitios sitio : sitiosList) {
+            if (sitio.isSelected()) {
+                selectedItems.add(sitio);
+            }
+        }
+        return selectedItems;
+    }
+
     public static class SitiosViewHolder extends RecyclerView.ViewHolder {
         ImageView image, btnBorrar, btnEditar;
         public TextView nombreTextView;
         public TextView descripcionTextView;
+        public CheckBox checkBox;
 
         public SitiosViewHolder(View itemView) {
             super(itemView);
@@ -57,6 +95,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
             descripcionTextView = itemView.findViewById(R.id.touratr_departamento);
             btnBorrar = itemView.findViewById(R.id.BtnBorrar);
             btnEditar = itemView.findViewById(R.id.BtnEditar);
+            checkBox = itemView.findViewById(R.id.checkBox);
         }
     }
 }

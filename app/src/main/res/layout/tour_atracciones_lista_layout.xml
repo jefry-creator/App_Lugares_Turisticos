@@ -10,6 +10,7 @@
     android:layout_margin="10dp"
     android:backgroundTint="@color/white">
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/touratr_image"
         android:layout_width="80dp"
@@ -47,10 +48,11 @@
         android:textSize="16sp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="end">
+        android:gravity="end"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="44dp"
@@ -70,13 +72,14 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/baseline_edit_square_24" />
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
             app:cardBackgroundColor="#C44C36"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
@@ -87,9 +90,23 @@
                 android:layout_height="28sp"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/baseline_delete_24"/>
+                app:srcCompat="@drawable/baseline_delete_24" />
 
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/linearLayout"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="66dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
 </RelativeLayout>

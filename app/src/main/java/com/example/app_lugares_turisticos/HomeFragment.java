@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("latitud", latitud + "");
                 intent.putExtra("longitud", longitud + "");
                 intent.putExtra("url", url);
+
                 getActivity().startActivity(intent);
 
         });
