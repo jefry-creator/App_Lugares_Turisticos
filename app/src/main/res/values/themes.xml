@@ -25,4 +25,9 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeBottomRight">32dp</item>
     </style>
+
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Cambia el fondo a tu recurso de fondo personalizado -->
+        <item name="android:background">@drawable/rounder_corner</item>
+    </style>
 </resources>

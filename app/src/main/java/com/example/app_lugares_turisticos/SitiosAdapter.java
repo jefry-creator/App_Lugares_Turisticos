@@ -85,4 +85,9 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
             imgSitio = itemView.findViewById(R.id.image_departamento);
         }
     }
+
+    public void filterList(List<Sitios> filteredList) {
+        sitiosList = filteredList;
+        notifyDataSetChanged();
+    }
 }

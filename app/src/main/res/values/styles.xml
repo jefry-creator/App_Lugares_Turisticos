@@ -7,4 +7,10 @@
 
     <style name="ThemeOverlay.App.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
         <item name="colorSecondary">@color/light_bluey</item>
-    </style></resources>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.FloatingActionButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item> <!-- Este valor controla la redondez, puedes ajustarlo según tus preferencias -->
+    </style>
+</resources>
