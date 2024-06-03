@@ -37,6 +37,16 @@
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/delhi" />
+
+                <ImageButton
+                    android:id="@+id/menu_item"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/dots"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"/>
             </androidx.cardview.widget.CardView>
 
             <TextView

@@ -36,13 +36,10 @@ public class TuristaAtracciones_Adapter extends RecyclerView.Adapter<TuristaAtra
         holder.nombre.setText(model2.nombre);
         holder.municipio.setText(model2.municipio);
     }
-
     @Override
     public int getItemCount() {
         return model.size();
     }
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;
@@ -54,8 +51,6 @@ public class TuristaAtracciones_Adapter extends RecyclerView.Adapter<TuristaAtra
             image = itemView.findViewById(R.id.image_departamento);
             nombre = itemView.findViewById(R.id.nombre_departamento);
             municipio = itemView.findViewById(R.id.nombre_municipio);
-
-
 
         }
     }
