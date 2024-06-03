@@ -30,8 +30,8 @@ public class UbicacionActivity extends FragmentActivity implements OnMapReadyCal
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
 
-    private double latitud, longitd;
-    private LatLng DESTINATION = new LatLng(latitud, longitd); // Coordenadas de destino (por ejemplo, San Francisco)
+    private double latitud, longitud;
+    private LatLng DESTINATION = new LatLng(latitud, longitud); // Coordenadas de destino (por ejemplo, San Francisco)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +45,11 @@ public class UbicacionActivity extends FragmentActivity implements OnMapReadyCal
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         Intent intent = getIntent();
         latitud = Double.parseDouble(intent.getStringExtra("latitud"));
-        longitd = Double.parseDouble(intent.getStringExtra("longitud"));
+        longitud = Double.parseDouble(intent.getStringExtra("longitud"));
 
-        Toast.makeText(UbicacionActivity.this, "Latitud: "+ latitud+"\nLongitud" + longitd, Toast.LENGTH_SHORT).show();
+        Toast.makeText(UbicacionActivity.this, "Latitud: "+ latitud+"\nLongitud" + longitud, Toast.LENGTH_SHORT).show();
 
-        DESTINATION = new LatLng(latitud, longitd);
+        DESTINATION = new LatLng(latitud, longitud);
     }
 
     @Override
