@@ -53,7 +53,6 @@ public class SitiosAdapter extends RecyclerView.Adapter<SitiosAdapter.SitiosView
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
         holder.itemView.setOnClickListener(v -> listener.onItemClick(sitio));
 
-        // Cargar la imagen desde la URL usando Picasso
         Picasso.get().load(sitio.getURLimagen()).into(holder.imgSitio, new Callback() {
             @Override
             public void onSuccess() {

@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,17 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
         Sitios sitio = sitiosList.get(position);
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
+        Picasso.get().load(sitio.getURLimagen()).into(holder.image, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
 
         holder.checkBox.setVisibility(isSelectionActive ? View.VISIBLE : View.GONE);
         holder.checkBox.setChecked(sitio.isSelected());

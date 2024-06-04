@@ -35,12 +35,12 @@ public class MunicipioDetalles extends AppCompatActivity {
     private Button btnObtenerUbicacion;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mPostRef;
-    private TextView mLikeCountTextView, titulo, txtdesc;
+    private TextView mLikeCountTextView, titulo, txtdesc, txttarifa, txthorarios, txtactividades;
     private ImageButton mLikeButton;
     private String mPostId;
     private String mCurrentUserId, latitud, longitud;
 
-    boolean isLiked = false; // variable para rastrear el estado del like
+    boolean isLiked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,11 @@ public class MunicipioDetalles extends AppCompatActivity {
         setContentView(R.layout.activity_municipio_detalles);
 
         titulo = findViewById(R.id.citydetails_name);
-        txtdesc = findViewById(R.id.citydetails_description);
+        txtdesc = findViewById(R.id.descripciontxt);
         imgSitio = findViewById(R.id.citydetails_image);
+        txttarifa = findViewById(R.id.tarifatxt);
+        txthorarios = findViewById(R.id.horariostxt);
+        txtactividades = findViewById(R.id.actividadestxt);
 
         Intent intent = getIntent();
         String key = intent.getStringExtra("id");
@@ -58,9 +61,16 @@ public class MunicipioDetalles extends AppCompatActivity {
         String url = intent.getStringExtra("url");
         latitud = intent.getStringExtra("latitud");
         longitud = intent.getStringExtra("longitud");
+        String tarifa = intent.getStringExtra("tarifa");
+        String HoraA = intent.getStringExtra("horaApertura");
+        String HoraC = intent.getStringExtra("horaCierre");
+        String act = intent.getStringExtra("actividades");
 
         titulo.setText(nombre);
         txtdesc.setText(desc);
+        txttarifa.setText("$"+tarifa);
+        txthorarios.setText(HoraA+" a "+HoraC);
+        txtactividades.setText(act);
 
         Toast.makeText(MunicipioDetalles.this, "Key: " + key, Toast.LENGTH_SHORT).show();
         // Inicializar Firebase Auth

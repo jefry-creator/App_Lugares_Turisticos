@@ -12,16 +12,17 @@
         android:paddingBottom="40dp">
 
         <TextView
-            android:id="@+id/citydetails_place1description"
+            android:id="@+id/actividadestxt"
             android:layout_width="360dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
+            android:layout_height="94dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/nunito_sans_bold"
             android:text="Descripción aquí"
             android:textColor="#CC000000"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/divider"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
         <TextView
@@ -58,10 +59,10 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/horariostxt" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tarifatxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -82,10 +83,10 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@+id/citydetails_description" />
+            app:layout_constraintTop_toBottomOf="@+id/descripciontxt" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/horariostxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -115,12 +116,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
             android:fontFamily="@font/nunito_sans_extrabold"
             android:text="Santa Ana"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtLikesCounts"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/citydetails_image" />
 
@@ -183,16 +183,16 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
-            android:id="@+id/citydetails_description"
+            android:id="@+id/descripciontxt"
             android:layout_width="360dp"
             android:layout_height="94dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/nunito_sans_bold"
             android:text="Descripción aquí"
             android:textColor="#CC000000"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/divider"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -209,7 +209,7 @@
             android:text="Obtener ubicación"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/tarifatxt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
