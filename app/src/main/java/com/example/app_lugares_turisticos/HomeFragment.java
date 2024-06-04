@@ -74,6 +74,11 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("descripcion", descripcion);
                 intent.putExtra("latitud", latitud + "");
                 intent.putExtra("longitud", longitud + "");
+                intent.putExtra("tarifa", sitio.getTarifaSitio());
+                intent.putExtra("actividades", sitio.getActividadesSitio());
+                intent.putExtra("direccion", sitio.getDireccionSitio());
+                intent.putExtra("horaApertura", sitio.getHoraApertura());
+                intent.putExtra("horaCierre", sitio.getHoraCierre());
                 intent.putExtra("url", url);
 
                 getActivity().startActivity(intent);

@@ -26,10 +26,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class UbicacionActivity extends FragmentActivity implements OnMapReadyCallback{
-
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
-
     private double latitud, longitud;
     private LatLng DESTINATION = new LatLng(latitud, longitud); // Coordenadas de destino (por ejemplo, San Francisco)
     @Override

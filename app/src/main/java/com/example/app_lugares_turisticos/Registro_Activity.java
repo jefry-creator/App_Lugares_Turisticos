@@ -119,7 +119,7 @@ public class Registro_Activity extends AppCompatActivity {
                             Sitios sitios = new Sitios();
                             sitios.setNombreSitio(Nombre_Lugar);
                             sitios.setDescripcionSitio(Desc_Lugar);
-                            sitios.setTarifaSitio("$" + tarifa);
+                            sitios.setTarifaSitio(tarifa);
                             sitios.setActividadesSitio(Actividades);
                             sitios.setHoraApertura(HoraA);
                             sitios.setHoraCierre(HoraC);
