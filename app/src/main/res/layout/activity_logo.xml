@@ -28,9 +28,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:text="Login"
-                android:id="@+id/login_button"
+                android:text="Iniciar Sesion"
+                android:id="@+id/logind_button"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/light_bluey"
                 app:cornerRadius="20dp"/>
@@ -38,8 +39,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:text="Sign Up"
-                android:id="@+id/signup_button"
+                android:text="Registro"
+                android:id="@+id/signupd_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/white"
