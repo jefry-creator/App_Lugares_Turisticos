@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
                                         auth = FirebaseAuth.getInstance();
-                                        Toast.makeText(LoginActivity.this, "todo bien" + auth.getCurrentUser().getEmail() , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "todo bien " + auth.getCurrentUser().getEmail() , Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.putExtra("correo", auth.getCurrentUser().getEmail());
                                         startActivity(intent);

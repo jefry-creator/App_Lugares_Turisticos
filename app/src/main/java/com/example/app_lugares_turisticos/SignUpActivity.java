@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                             } else {
-                                Toast.makeText(SignUpActivity.this, "Registro fallido" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Registro fallido " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

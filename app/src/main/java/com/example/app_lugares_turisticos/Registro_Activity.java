@@ -259,7 +259,7 @@ public class Registro_Activity extends AppCompatActivity {
         endTime.setText(horaCierre);
 
         Picasso.get().load(url).into(imgSitio);
-
+        btnGuardar.setText("Editar");
         btnGuardar.setOnClickListener(v -> actualizarSitio(key));
     }
 

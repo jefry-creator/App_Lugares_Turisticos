@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottomAppBar);
 
-        // Get the email from the intent
-
         Intent intent = getIntent();
         String correo = intent.getStringExtra("correo");
 

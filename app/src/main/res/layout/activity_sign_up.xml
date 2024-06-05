@@ -47,7 +47,9 @@
                 android:hint="Correo"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:maxLines="1"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -58,7 +60,10 @@
                 android:hint="Contraseña"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:inputType="textPassword"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

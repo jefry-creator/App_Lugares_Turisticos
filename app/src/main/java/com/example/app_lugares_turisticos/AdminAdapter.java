@@ -46,7 +46,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.SitiosViewHo
         Sitios sitio = sitiosList.get(position);
         holder.nombreTextView.setText(sitio.getNombreSitio());
         holder.descripcionTextView.setText(sitio.getDescripcionSitio());
-        Picasso.get().load(sitio.getURLimagen()).into(holder.image, new Callback() {
+        Picasso.get().load(sitio.getURLimagen()).fit().into(holder.image, new Callback() {
             @Override
             public void onSuccess() {
 
