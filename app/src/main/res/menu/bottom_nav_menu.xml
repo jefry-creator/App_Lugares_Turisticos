@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="Inicio"
         android:icon="@drawable/ic_home"
         app:cnb_backgroundColor="#ff785b"
         app:cnb_iconColor="#fff"
@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/discover"
-        android:title="Discover"
+        android:title="Ubicaciones"
         android:icon="@drawable/baseline_add_location_alt_24"
         app:cnb_backgroundColor="#ff785b"
         app:cnb_iconColor="#fff"
@@ -20,8 +20,8 @@
 
     <item
         android:id="@+id/account"
-        android:title="Account"
-        android:icon="@drawable/ic_notifications"
+        android:title="Admin"
+        android:icon="@drawable/admin_with_cogwheels_svgrepo_com"
         app:cnb_backgroundColor="#ff785b"
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff" />

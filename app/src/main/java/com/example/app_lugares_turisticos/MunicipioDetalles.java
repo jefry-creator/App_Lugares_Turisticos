@@ -36,7 +36,7 @@ public class MunicipioDetalles extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mPostRef;
     private TextView mLikeCountTextView, titulo, txtdesc, txttarifa, txthorarios, txtactividades;
-    private ImageButton mLikeButton;
+    private ImageButton mLikeButton, btnRegre;
     private String mPostId;
     private String mCurrentUserId, latitud, longitud;
 
@@ -53,6 +53,15 @@ public class MunicipioDetalles extends AppCompatActivity {
         txttarifa = findViewById(R.id.tarifatxt);
         txthorarios = findViewById(R.id.horariostxt);
         txtactividades = findViewById(R.id.actividadestxt);
+        btnRegre = findViewById(R.id.btnRegresar);
+
+        btnRegre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(MunicipioDetalles.this, MainActivity.class);
+                startActivity(loginIntent);
+            }
+        });
 
         Intent intent = getIntent();
         String key = intent.getStringExtra("id");
@@ -72,7 +81,6 @@ public class MunicipioDetalles extends AppCompatActivity {
         txthorarios.setText(HoraA+" a "+HoraC);
         txtactividades.setText(act);
 
-        Toast.makeText(MunicipioDetalles.this, "Key: " + key, Toast.LENGTH_SHORT).show();
         // Inicializar Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         mCurrentUserId = mAuth.getCurrentUser().getUid();
@@ -159,7 +167,7 @@ public class MunicipioDetalles extends AppCompatActivity {
         });
 
 
-        Picasso.get().load(url).into(imgSitio, new Callback() {
+        Picasso.get().load(url).fit().into(imgSitio, new Callback() {
             @Override
             public void onSuccess() {
 

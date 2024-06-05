@@ -56,6 +56,9 @@ public class HomeFragment extends Fragment {
 
         searchView = view.findViewById(R.id.searchViewhome);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        correo = user.getEmail();
+
 
         recyclerView = view.findViewById(R.id.touristattractions_recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -106,10 +109,6 @@ public class HomeFragment extends Fragment {
                 // Manejo de errores
             }
         });
-
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        correo = user.getEmail();
 
         // Inicializa el botón de menú
         btnMenu = view.findViewById(R.id.imageView2);
@@ -174,7 +173,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void MostrarMenu() {
-        asdns.setText("Hola");
+        asdns.setText("Busca un lugar!");
     }
 
     private void mostrarPopupMenu(View view) {

@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
+
+    String correo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,9 @@ public class SplashActivity extends AppCompatActivity {
                 if(currentUser==null){
                     startActivity(new Intent(SplashActivity.this,LogoActivity.class));
                 }else{
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    intent.putExtra("correo", currentUser.getEmail());
+                    startActivity(intent);
                 }
                 finish();
             }
