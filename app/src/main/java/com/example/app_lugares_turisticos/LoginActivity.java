@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                             });
 
                         } catch (ApiException e){
-                            Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Algo salió mal...", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
-                                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Inicio de sesión exitosa!", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.putExtra("correo", auth.getCurrentUser().getEmail());
                                         startActivity(intent);
@@ -112,16 +112,16 @@ public class LoginActivity extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Error de inicio de sesión", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     } else {
-                        loginPassword.setError("Empty fields are not allowed");
+                        loginPassword.setError("No se permiten campos vacíos");
                     }
                 } else if (email.isEmpty()) {
-                    loginEmail.setError("Empty fields are not allowed");
+                    loginEmail.setError("No se permiten campos vacíos");
                 } else {
-                    loginEmail.setError("Please enter correct email");
+                    loginEmail.setError("Por favor ingrese el correo electrónico correcto");
                 }
             }
         });

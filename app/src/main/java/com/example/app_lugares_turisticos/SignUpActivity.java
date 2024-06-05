@@ -32,19 +32,19 @@ public class SignUpActivity extends AppCompatActivity {
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
                 if (user.isEmpty()){
-                    signupEmail.setError("Email cannot be empty");
+                    signupEmail.setError("El correo electrónico no puede estar vacío.");
                 }
                 if (pass.isEmpty()){
-                    signupPassword.setError("Password cannot be empty");
+                    signupPassword.setError("La contraseña no puede estar vacía");
                 } else{
                     auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                             } else {
-                                Toast.makeText(SignUpActivity.this, "SignUp Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Registro fallido" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
