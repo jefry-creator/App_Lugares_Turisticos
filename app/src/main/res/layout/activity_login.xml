@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar sesión"
+                android:text="Iniciar"
                 android:id="@+id/loginText"
                 android:textSize="36sp"
                 android:textAlignment="center"
@@ -66,7 +66,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Iniciar sesión"
+                android:text="Iniciar"
                 android:id="@+id/login_button"
                 android:textSize="18sp"
                 android:textColor="@color/white"
@@ -83,7 +83,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
                 android:padding="8dp"
-                android:text="Iniciar sesión con Google" />
+                android:text="Iniciar con Google" />
 
             <TextView
                 android:id="@+id/signUpRedirectText"
@@ -92,7 +92,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:layout_gravity="center"
-                android:text="Aún no registrado? Regístrese"
+                android:text="No estas registrado? Regístrate"
                 android:textAlignment="center"
                 android:textColor="@color/light_bluey"
                 android:textSize="18sp" />

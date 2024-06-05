@@ -3,6 +3,7 @@ package com.example.app_lugares_turisticos;
 public class Sitios {
 
     private String key;
+
     String URLimagen,nombreSitio, descripcionSitio, horaApertura, horaCierre,
             tarifaSitio, actividadesSitio, direccionSitio;
     double Latitud, Longitud;

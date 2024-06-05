@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
     Button asdns;
     private GoogleSignInClient mGoogleSignInClient;
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, recyclerView2;
     private SitiosAdapter adapter;
     private List<Sitios> sitiosList;
     private DatabaseReference mDatabase;
@@ -62,6 +62,10 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.touristattractions_recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        recyclerView2 = view.findViewById(R.id.touristdestinations_recyclerview);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
         sitiosList = new ArrayList<>();
         adapter = new SitiosAdapter(sitiosList, sitio -> {
                 String key = sitio.getKey();
@@ -88,6 +92,9 @@ public class HomeFragment extends Fragment {
 
         });
         recyclerView.setAdapter(adapter);
+        recyclerView2.setAdapter(adapter);
+
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference("sitios");
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -164,6 +171,8 @@ public class HomeFragment extends Fragment {
             if (sitio.getNombreSitio().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(sitio);
             } else if (sitio.getDescripcionSitio().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(sitio);
+            }else if (sitio.getDireccionSitio().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(sitio);
             }
         }

@@ -88,17 +88,13 @@ public class MunicipioDetalles extends AppCompatActivity {
 
         // Inicializar Firebase Database
         mDatabase = FirebaseDatabase.getInstance();
-        mPostId = key; // Reemplaza "your_post_id" con el id de la publicación actual
+        mPostId = key;
 
-        // Referencia a la publicación actual en la base de datos
         mPostRef = mDatabase.getReference().child("sitios").child(mPostId);
 
-        // Referencias a los elementos de la interfaz de usuario
         mLikeCountTextView = findViewById(R.id.txtLikesCounts);
         mLikeButton = findViewById(R.id.btnLikes);
 
-        // Escuchar cambios en los likes de la publicación actual
-        // Asignar el color al botón basado en el estado del like desde Firebase
         mPostRef.child("likes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -133,7 +129,6 @@ public class MunicipioDetalles extends AppCompatActivity {
             mLikeButton.setImageResource(R.drawable.baseline_favorite_border_24);
         }
 
-        // Configurar el listener para el botón de like
         mLikeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
